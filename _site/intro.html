@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.246">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Analysis of Natural Gas Industry in the US</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title"><a href="https://samikshathikekar.georgetown.domains/time-series-project-website/_site/intro.html">DSAN-5600 PROJECT</a></span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://samikshathikekar.georgetown.domains/time-series-project-layout/_site/">
+ <span class="menu-text">Author</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://samikshathikekar.georgetown.domains/time-series-project-layout/_site/ts.html">
+ <span class="menu-text">Time Series Overview</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./intro.qmd">
+ <span class="menu-text">Time Series Project</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Analysis of Natural Gas Industry in the US</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">Introduction</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./datasrc.html" class="sidebar-item-text sidebar-link">Data Sources</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dataviz.html" class="sidebar-item-text sidebar-link">Data Visualization</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./eda.html" class="sidebar-item-text sidebar-link">Exploratory Data Analysis</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./univariate.html" class="sidebar-item-text sidebar-link">Univariate TS Models (ARIMA / SARIMA)</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multivariate.html" class="sidebar-item-text sidebar-link">Multivariate TS Models (ARIMAX / SARIMAX / VAR)</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./financial.html" class="sidebar-item-text sidebar-link">Financial TS Models (ARCH / GARCH)</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dl.html" class="sidebar-item-text sidebar-link">Deep Learning for TS</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./conclusions.html" class="sidebar-item-text sidebar-link">Conclusions / Discussion</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#literature-review" id="toc-literature-review" class="nav-link" data-scroll-target="#literature-review">Literature review</a></li>
+  <li><a href="#explore-the-big-picture" id="toc-explore-the-big-picture" class="nav-link" data-scroll-target="#explore-the-big-picture">Explore the big picture</a></li>
+  <li><a href="#analytical-angles" id="toc-analytical-angles" class="nav-link" data-scroll-target="#analytical-angles">Analytical Angles</a>
+  <ul class="collapse">
+  <li><a href="#economic-impact" id="toc-economic-impact" class="nav-link" data-scroll-target="#economic-impact">Economic Impact</a></li>
+  <li><a href="#demandsupply-dynamics" id="toc-demandsupply-dynamics" class="nav-link" data-scroll-target="#demandsupply-dynamics">Demand/Supply Dynamics</a></li>
+  <li><a href="#environmental-impact" id="toc-environmental-impact" class="nav-link" data-scroll-target="#environmental-impact">Environmental Impact</a></li>
+  <li><a href="#market-performance" id="toc-market-performance" class="nav-link" data-scroll-target="#market-performance">Market Performance</a></li>
+  <li><a href="#trade-dynamics" id="toc-trade-dynamics" class="nav-link" data-scroll-target="#trade-dynamics">Trade Dynamics</a></li>
+  </ul></li>
+  <li><a href="#guiding-questions" id="toc-guiding-questions" class="nav-link" data-scroll-target="#guiding-questions">Guiding Questions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Analysis of Natural Gas Industry in the US</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/intro/hero-intro.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In the big picture of America’s energy scene, natural gas is like a star player – it’s affordable, does a good job, and is kinder to the environment compared to old-school fuels. They call it a “bridge fuel,” helping us move from the old ways of powering things to a cleaner, greener future. It’s a practical choice that keeps the lights on while we figure out the renewable energy stuff. And natural gas isn’t just about making power; it’s woven into everything, influencing how we do business, sparking new ideas, and even playing a role in how countries work together. So, when we talk about natural gas, it’s not just about keeping the energy flowing – it’s about shaping how we live and where we’re headed.</p>
+<p>Zooming in on the U.S. natural gas scene, you realize it’s not just about drilling and pipelines. It’s part of everyday life, from heating our homes to fueling the machines that make stuff. But its impact goes even deeper, affecting jobs, technology, and even how countries relate to each other. Natural gas isn’t just a player in the energy game; it’s like a backstage VIP, pulling strings that touch everything from local businesses to global affairs. So, as the way we power up changes, natural gas keeps holding its own, being a key player in the U.S. story – past, present, and future.</p>
+<p>Watch how natural gas has our backs. It provides energy when renewables don’t have enough power stored, to help us keep up with our modern lifestyles.</p>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="video_1.mp4"></video></div>
+<p><a href="https://vimeo.com/525800988">video source</a></p>
+</section>
+<section id="literature-review" class="level2">
+<h2 class="anchored" data-anchor-id="literature-review">Literature review</h2>
+<p>Nowhere is the influence of natural gas more pronounced than in the United States. As both the world’s largest producer and consumer of natural gas, the nation relies heavily on this resource.</p>
+<p>Talking about natural gas production, significant sources include basins such as the Marcellus and Utica Shale formations in Appalachia, as well as the Haynesville Shale formation in Louisiana and East Texas. The U.S. Geological Survey estimates that the Appalachian formations contain approximately 214 trillion cubic feet of undiscovered, technically recoverable continuous natural gas resources. Thanks to advancements in drilling and extraction technologies, it’s now possible to produce large quantities of natural gas safely and cost-effectively, providing a reliable local supply for consumers. <a href="https://www.usgs.gov/news/national-news-release/usgs-estimates-214-trillion-cubic-feet-natural-gas-appalachian-basin#:~:text=The%20Marcellus%20Shale%20and%20Point,according%20to%20new%20USGS%20assessments.">Source</a></p>
+<p><img src="img/intro/production.jpeg" style="width:100.0%;height:100.0%"></p>
+<p>Consumption of natural gas in the U.S. has grown alongside production, it claims a substantial 33% share in the U.S. energy consumption landscape, making it a cornerstone in the nation’s energy portfolio.</p>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Natural gas consumption actually grew 2% in April 2020 vs.&nbsp;a year earlier.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This came during the same month that overall U.S. energy consumption fell to its lowest level in more than 30 years. Likely affected by stay-at-home orders, residential consumption of natural gas was 15% higher in April 2020 vs.&nbsp;a year earlier.</p>
+</div>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+More than 100 coal-fired plants have been replaced or converted to natural gas in the U.S. since 2011.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The decision for plants to switch from coal to natural gas has been driven by stricter emission standards, low natural gas prices, and more efficient natural gas turbine technology.</p>
+</div>
+</div>
+<p><a href="https://www.eia.gov/energyexplained/us-energy-facts/">Source</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/intro/intro-chart.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<p>The applications of natural gas are diverse, ranging from electricity generation to fueling vehicles, heating homes, and cooking. Significantly, it is used for heating, electricity generation, and industrial processes in the U.S., highlighting its pivotal role in the nation’s power infrastructure.</p>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Natural gas-fired power generation in the Lower 48 jumped 9% in the first half of 2020 vs.&nbsp;a year earlier.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Natural gas generators now make up largest share of U.S. electricity generation capacity.</p>
+</div>
+</div>
+<p><a href="https://www.eia.gov/energyexplained/us-energy-facts/">Source</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/intro/intro-bar.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+<p>Beyond its energy applications, the natural gas industry is an economic powerhouse. Rising natural gas production has historically correlated directly with economic growth in the country – with the past decade-plus being a prime example.</p>
+<p>As natural gas production skyrocketed in the United States over the past decade-plus, the U.S. enjoyed an unprecedented 11 consecutive years of gross domestic product (GDP) growth prior to the COVID-19 pandemic. The natural gas boom has been credited for 8% of GDP growth since the Great Recession. <a href="https://www.cnbc.com/2019/07/02/this-is-now-the-longest-us-economic-expansion-in-history.html">Source1</a> <a href="https://jpt.spe.org/dallas-fed-us-shale-boom-boosted-us-gdp-1">Source2</a></p>
+<p>This economic prosperity can largely be explained by the fact that strong domestic natural gas production dramatically reduces foreign imports, keeping billions of dollars here in our own economy rather than exporting them oversees. Our newfound energy bounty has also proven the equivalent of a massive tax cut, lowering energy costs dramatically. In fact, the Department of Energy reported in 2018 that average U.S. energy costs fell 34 percent from 2008 to 2016, dropping from record-high levels to a “record-low energy expenditure share” in less than a decade. <a href="https://www.eia.gov/todayinenergy/detail.php?id=36754&amp;src=email">Source</a></p>
+<p>The U.S.natural gas industry also continues to support more than 10.3 million jobs across the United States, with direct natural gas industry jobs paying an average salary double the private sector average ($112,712 per year). <a href="https://www.energy.gov/sites/prod/files/2020/10/f79/Natural%20Gas%20Benefits%20Report.pdf">Source</a></p>
+<p>Energy is the one thing that all Americans use. And with that fundamental reality in mind, we have literally been able to drill our way to lower energy prices and economic prosperity over the past decade-plus, all while reducing greenhouse gas emissions. <a href="https://www.api.org/news-policy-and-issues/taxes/oil-and-natural-gas-contribution-to-us-economy-fact-sheet">Source</a></p>
+<p><img src="img/intro/facts.jpeg" class="img-fluid" style="width:100.0%" data-fig-align="center" alt="Source"> <a href="https://marcelluscoalition.org/2017/04/19/natural-gas-earth-day-facts/">Source</a></p>
+<p>The United States has reduced carbon dioxide emissions more than any other country this century. And although it may surprise casual observers, experts agree that the primary reason for these emission declines is fuel-switching to clean-burning natural gas, which has been made possible by industry innovation. That’s right: the same technologies that have allowed us to emerge as the leading oil and natural gas producer in the world are also largely responsible for our status as the world leader in greenhouse gas emission reductions. The decoupling trend is unprecedented and shows that we don’t have to choose between the economy and environment. The emissions reductions have been driven by fuel-switching in the electricity generation sector, with the Energy Information Administration estimating that natural gas is actually responsible for 58 percent more power sector CO2 emissions reductions than renewables and other non-carbon electricity generation sources. <a href="https://www.eia.gov/environment/emissions/carbon/">Source</a></p>
+<p><strong>Recent Record-Breaking Consumption</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/intro/ice-intro.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">image by: GETTY IMAGES/ISTOCKPHOTO</figcaption><p></p>
+</figure>
+</div>
+<p>In a remarkable turn of events, the severe U.S. winter weather in mid-January 2024 set new records for natural gas consumption. On January 16, 2024, consumption reached an unprecedented monthly high while the prices for the heating fuel have dropped to their lowest since April. This real-world event offers a tangible backdrop to the broader exploration, showcasing how the industry responds to and is influenced by external factors. <a href="https://www.eia.gov/todayinenergy/detail.php?id=61383&amp;utm_source=Twitter&amp;utm_medium=EIAsocial&amp;utm_id=FirstUpdate">Source</a></p>
+</section>
+<section id="explore-the-big-picture" class="level2">
+<h2 class="anchored" data-anchor-id="explore-the-big-picture">Explore the big picture</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/intro/big_pic_update.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</section>
+<section id="analytical-angles" class="level2">
+<h2 class="anchored" data-anchor-id="analytical-angles">Analytical Angles</h2>
+<p>This project aims to deepen understanding of the natural gas sector’s crucial role within the broader energy matrix by analyzing economic, environmental, demand and supply dynamics, stock market interactions, and trade impacts. It will highlight current market conditions and forecast future trends.</p>
+<section id="economic-impact" class="level3">
+<h3 class="anchored" data-anchor-id="economic-impact">Economic Impact</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/intro/gdp.webp" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Image source: Shutterstock/FOTOGRIN</figcaption><p></p>
+</figure>
+</div>
+<p>This comprehensive analysis embarks on a multifaceted journey to unravel the correlation between natural gas industry dynamics and key economic indicators such as GDP and unemployment rates. The analysis primarily focuses on how these economic factors impact natural gas prices, illuminating the industry’s influence on the broader economic health of the nation.</p>
+</section>
+<section id="demandsupply-dynamics" class="level3">
+<h3 class="anchored" data-anchor-id="demandsupply-dynamics">Demand/Supply Dynamics</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/intro/demand.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<p>This analysis delves into the dynamics of demand and supply, exploring how factors such as natural gas prices, storage, and temperature influence consumption, as well as how supply-side dynamics, including imports and production, affect natural gas prices. A thorough understanding of these demand and supply behaviors will enrich the analysis.</p>
+</section>
+<section id="environmental-impact" class="level3">
+<h3 class="anchored" data-anchor-id="environmental-impact">Environmental Impact</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/intro/environment.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<p>A crucial facet of the exploration lies in understanding the Environmental Impact of natural gas consumption and production. By correlating natural gas usage and production with carbon emissions, the analysis contributes to the ongoing discourse on sustainable energy practices.</p>
+</section>
+<section id="market-performance" class="level3">
+<h3 class="anchored" data-anchor-id="market-performance">Market Performance</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/intro/stocks.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">image by: Torsten Asmus/iStock via Getty Images</figcaption><p></p>
+</figure>
+</div>
+<p>Extending into the Financial Markets, the analysis scrutinizes the stock market performance of major energy companies involved in natural gas production. This facet provides insights into the industry’s financial resilience and responsiveness to market dynamics.</p>
+</section>
+<section id="trade-dynamics" class="level3">
+<h3 class="anchored" data-anchor-id="trade-dynamics">Trade Dynamics</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/intro/export.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<p>Trade dynamics form a crucial part of this analysis, examining how natural gas trade relationships contribute to a broader understanding of the industry’s global economic influence. This analysis specifically explores how U.S. natural gas consumption, exchange rates, and the economic health of importing country affect natural gas exports.</p>
+</section>
+</section>
+<section id="guiding-questions" class="level2">
+<h2 class="anchored" data-anchor-id="guiding-questions">Guiding Questions</h2>
+<ul>
+<li><p>How can we anticipate changes in natural gas prices based on economic indicators like GDP and unemployment rates?</p></li>
+<li><p>How can we optimize natural gas consumption in response to fluctuating production levels, and external factors like temperature and storage capacities?</p></li>
+<li><p>How do domestic consumption, exchange rates, and the economic health of importing countries like the Netherlands affect US natural gas export volumes?</p></li>
+<li><p>How can changes in natural gas consumption and production levels be expected to influence CO2 emissions?</p></li>
+<li><p>How can understanding the relationship between supply dynamics, such as changes in imports and production, help optimize pricing strategies and inventory management for natural gas at Henry Hub?</p></li>
+<li><p>How do stock market trends of major natural gas companies reflect the overall health of the natural gas industry?</p></li>
+<li><p>What are the future trends in natural gas prices based on historical price patterns?</p></li>
+<li><p>How can we use historical consumption patterns to predict future demand for natural gas, and how might this influence US procurement and distribution strategies?</p></li>
+<li><p>Can we anticipate the future levels of natural gas imports and exports based on historical data?</p></li>
+<li><p>Can we predict future trends in CO2 emissions based solely on their historical patterns?Based on trends in CO2 emissions from natural gas usage, how can companies adjust their practices to better meet environmental standards?</p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center">Copyright 2024, Samiksha Rajendra Thikekar</div>
+  </div>
+</footer>
+<script>videojs(video_shortcode_videojs_video1);</script>
+
+
+
+</body></html>
